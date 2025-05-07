@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { signIn, signUp } from '../api/auth'
-import { useAuth } from '../hooks/useAuth'
+import useAuth from '../hooks/useAuth'
 
 /**
  * Handles Login/Register within a modal

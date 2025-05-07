@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { updateXProfile, deleteAccount } from '../api/users'
-import { useAuth } from '../hooks/useAuth'
+import useAuth from '../hooks/useAuth'
 
 /**
  * Modal for updating X profile and deleting account

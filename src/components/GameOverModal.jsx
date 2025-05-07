@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { revealAnswer } from '../api/events'
-import { useAuth } from '../hooks/useAuth'
+import useAuth from '../hooks/useAuth'
 
 /**
  * Modal to show answer, alt answers, summary, and share options

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { fetchUserFullStats } from '../api/users'
-import { useAuth } from '../hooks/useAuth'
+import useAuth from '../hooks/useAuth'
 
 /**
  * Displays user statistics in a modal
