@@ -16,16 +16,16 @@ export function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 p-4">
-      <h1 className="text-2xl font-bold mb-4">Login</h1>
-      {error && <p className="text-red-500 mb-2">{error}</p>}
-      <form onSubmit={handleSubmit} className="space-y-4 w-full max-w-sm">
+    <div className="auth-container">
+      <h1 className="auth-title">Login</h1>
+      {error && <p className="auth-error">{error}</p>}
+      <form onSubmit={handleSubmit} className="auth-form">
         <input
           type="email"
           placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="w-full px-3 py-2 border rounded"
+          className="auth-form-input"
           required
         />
         <input
@@ -33,12 +33,12 @@ export function LoginPage() {
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          className="w-full px-3 py-2 border rounded"
+          className="auth-form-input"
           required
         />
         <button
           type="submit"
-          className="w-full px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+          className="login-btn"
         >
           Login
         </button>
@@ -66,16 +66,16 @@ export function SignupPage() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 p-4">
-      <h1 className="text-2xl font-bold mb-4">Sign Up</h1>
-      {error && <p className="text-red-500 mb-2">{error}</p>}
-      <form onSubmit={handleSubmit} className="space-y-4 w-full max-w-sm">
+    <div className="auth-container">
+      <h1 className="auth-title">Sign Up</h1>
+      {error && <p className="auth-error">{error}</p>}
+      <form onSubmit={handleSubmit} className="auth-form">
         <input
           type="text"
           placeholder="Username"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
-          className="w-full px-3 py-2 border rounded"
+          className="auth-form-input"
           required
         />
         <input
@@ -83,7 +83,7 @@ export function SignupPage() {
           placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="w-full px-3 py-2 border rounded"
+          className="auth-form-input"
           required
         />
         <input
@@ -91,12 +91,12 @@ export function SignupPage() {
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          className="w-full px-3 py-2 border rounded"
+          className="auth-form-input"
           required
         />
         <button
           type="submit"
-          className="w-full px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700"
+          className="signup-btn"
         >
           Sign Up
         </button>

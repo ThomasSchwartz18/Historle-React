@@ -1,0 +1,249 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+:root {
+  --primary-color: #2c3e50;
+  --secondary-color: #34495e;
+  --accent-color: #8b4513;
+  --background-color: #f5f6e9;
+  --text-color: #2c3e50;
+  --border-color: #d4c5b9;
+ --success-color: #27ae60;
+  --error-color: #c0392b;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.landing-container {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    /* background: linear-gradient(135deg, var(--background-color), #FFF2CA); */
+    animation: fadeIn 1s ease-in-out;
+    font-family: 'Inter', sans-serif;
+    padding: 1rem;
+}
+
+.landing-btn-container-top {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.landing-logo-img {
+    width: 40%;
+    height: auto;
+    margin-bottom: 2.5rem;
+    animation: slideIn 0.5s ease-out;
+}
+
+.landing-title {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--text-color);
+    text-shadow: 1px 1px 3px rgba(64, 35, 16, 0.2);
+    margin-bottom: 2rem;
+    animation: slideIn 0.8s ease-out;
+}
+
+.landing-btn-container {
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.landing-login-btn {
+    width: 12rem;
+    padding: 0.75rem 1.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    background: linear-gradient(45deg, #FFA653, #A65A2A);
+    color: #ffffff;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    font-family: 'Inter', sans-serif;
+}
+
+.landing-login-btn:hover {
+    box-shadow: 0 0 15px rgba(255, 186, 107, 0.8),
+                0 0 25px rgba(135, 94, 0, 0.6);
+    transform: translateY(-3px);
+}
+
+.landing-signup-btn {
+    width: 12rem;
+    padding: 0.75rem 1.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    background: linear-gradient(45deg, #ad7748, #6d5229, #6f3f24);
+    color: #ffffff;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    font-family: 'Inter', sans-serif;
+}
+
+.landing-signup-btn:hover {
+    box-shadow: 0 0 15px rgba(146, 106, 61, 0.8),
+                0 0 25px rgba(51, 36, 0, 0.6);
+    transform: translateY(-3px);
+}
+
+.landing-guest-btn {
+    width: 12rem;
+    padding: 0.75rem 1.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    background: linear-gradient(45deg, #6b7280, #4b5563);
+    color: #ffffff;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    font-family: 'Inter', sans-serif;
+}
+
+.landing-guest-btn:hover {
+    box-shadow: 0 0 15px rgba(107, 114, 128, 0.5);
+    transform: translateY(-3px);
+}
+
+.landing-learn-to-play-btn-container {
+    width: 100%;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    display: flex;
+    justify-content: center;
+}
+
+.landing-learn-to-play-btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    /* background: linear-gradient(45deg, #934204, #6f3f24); */
+    color: #171717;
+    border: 1px solid #171717;
+    border-radius: 20px;
+    text-decoration: none;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    font-family: 'Inter', sans-serif;
+}
+
+.landing-learn-to-play-btn:hover {
+    box-shadow: 0 0 15px rgba(67, 67, 67, 0.8),
+                0 0 25px rgba(104, 103, 103, 0.6);
+    transform: translateY(-3px);
+}
+
+.learn-how-to-container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.landing-learn-to-play {
+    max-width: 600px;
+    background: #ffffff;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    animation: slideIn 0.8s ease-out;
+    border: 1px solid var(--border-color);
+    margin-bottom: 2rem;
+}
+
+.landing-learn-to-play ol {
+    list-style-type: decimal;
+    padding-left: 1.5rem;
+    color: var(--text-color);
+    font-size: 1rem;
+    line-height: 1.6;
+    text-align: left;
+}
+
+.landing-learn-to-play li {
+    margin-bottom: 0.75rem;
+}
+
+.landing-learn-to-play li i {
+    color: #934204;
+    font-style: italic;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@media (max-width: 768px) {
+    .landing-logo-img {
+        width: 60%;
+        max-width: 150px;
+        margin-bottom: 1.5rem;
+    }
+
+    .landing-title {
+        font-size: 1.5rem;
+    }
+
+    .landing-btn-container {
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.75rem;
+    }
+
+    .landing-login-btn,
+    .landing-signup-btn,
+    .landing-guest-btn,
+    .landing-learn-to-play-btn {
+        width: 100%;
+        max-width: 10rem;
+        font-size: 1rem;
+        padding: 0.75rem 1rem;
+    }
+
+    .landing-learn-to-play {
+        max-width: 90%;
+        padding: 1rem;
+    }
+
+    .landing-learn-to-play ol {
+        font-size: 0.9rem;
+    }
+
+    .landing-login-btn:hover,
+    .landing-signup-btn:hover,
+    .landing-guest-btn:hover,
+    .landing-learn-to-play-btn:hover {
+        box-shadow: none !important;
+        transform: none !important;
+    }
+}

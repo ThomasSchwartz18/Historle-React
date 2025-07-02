@@ -33,7 +33,7 @@ export default function GameOverModal({
             {summary}
           </div>
 
-          <h2>Easily share your results!</h2>
+          <h2>Help Historle grow by sharing your results!</h2>
           <div className="share-container">
             <button id="share-facebook" className="share-btn facebook">
               <i className="fab fa-facebook-f"></i> Facebook

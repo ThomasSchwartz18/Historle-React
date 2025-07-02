@@ -5,6 +5,8 @@ import router from './routes';
 import './assets/css/style.css';
 import './assets/css/share.css';
 import './assets/css/articles.css';
+import './assets/css/landing.css';
+import './assets/css/authPages.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
