@@ -5,6 +5,7 @@ import confetti from 'canvas-confetti';
 import Nav from './Nav';
 import GameOverModal from './GameOverModal';
 import TopTenLeaderboard from './TopTenLeaderboard';
+import TopStreakLeaderboard  from './TopStreakLeaderboard';
 
 function getLocalDateString() {
   const now = new Date();
@@ -204,6 +205,7 @@ export default function GamePage() {
                 </div>
                 <div className="leaderboards-container">
                   <TopTenLeaderboard />
+                  <TopStreakLeaderboard />
                 </div>
               </div>
             </div>
