@@ -213,6 +213,11 @@ export default function GamePage() {
       <GameOverModal
         visible={modalVisible}
         onClose={handleCloseModal}
+        onSubmitScore={async () => {
+          // you might also want to grab the playerName / xUsername here
+          await insertLeaderboard(true);
+          handleCloseModal();
+        }}
         {...modalProps}
       />
     </>
