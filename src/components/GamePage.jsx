@@ -153,7 +153,6 @@ export default function GamePage() {
 
   return (
     <>
-      <Nav />
       <div className="container">
         <main>
           <div className="game-section">
