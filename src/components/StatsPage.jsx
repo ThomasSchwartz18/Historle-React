@@ -55,7 +55,8 @@ export default function StatsPage() {
         { name: 'Losses', value: stats.days_played - stats.total_wins }
       ]
     : [];
-  const COLORS = ['#0088FE', '#FF8042'];
+  
+  const COLORS = ['#4CAF50', '#F44336']; // green for Wins, red for Losses
 
   return (
     <div className="stats-page">

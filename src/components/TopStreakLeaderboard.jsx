@@ -41,7 +41,7 @@ export default function TopStreakLeaderboard() {
   return (
     <div className="leaderboards-container">
       <div className="leaderboard streak-leaderboard">
-        <h2>Top 5 Streaks</h2>
+        <h2>🔥 Top 5 Streaks</h2>
         <div className="leaderboard-header">
           <span className="rank">Rank</span>
           <span className="name">Name</span>

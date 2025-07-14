@@ -50,12 +50,12 @@ export default function TopTenLeaderboard() {
   }, []);  
 
   if (loading) return <p>Loading leaderboard...</p>;
-  if (!entries.length) return <p>No scores for today yet.</p>;
+  // if (!entries.length) return <p>No scores for today yet.</p>;
 
   return (
     <div className="leaderboards-container">
       <div className="leaderboard">
-        <h2>Top 10 Leaderboard</h2>
+        <h2>🏆 Top 10 Leaderboard</h2>
         <div className="leaderboard-header">
           <span className="rank">Rank</span>
           <span className="name">Name</span>
