@@ -7,6 +7,7 @@ import './assets/css/share.css';
 import './assets/css/articles.css';
 import './assets/css/landing.css';
 import './assets/css/authPages.css';
+import './assets/css/staticHomePage.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
