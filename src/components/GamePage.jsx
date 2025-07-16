@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { supabase } from '../lib/supabaseClient';
 import { useNavigate } from 'react-router-dom';
 import confetti from 'canvas-confetti';
 import Nav from './Nav';
 import GameOverModal from './GameOverModal';
 import TopTenLeaderboard from './TopTenLeaderboard';
-import TopStreakLeaderboard  from './TopStreakLeaderboard';
+import TopStreakLeaderboard from './TopStreakLeaderboard';
 
 function getLocalDateString() {
   const now = new Date();
@@ -25,7 +25,7 @@ export default function GamePage() {
   const [error, setError] = useState(null);
   const [modalVisible, setModalVisible] = useState(false);
   const [modalProps, setModalProps] = useState({});
-  const [startTime, setStartTime] = useState(Date.now());
+  const startTimeRef = useRef(Date.now());
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
@@ -68,6 +68,8 @@ export default function GamePage() {
           difficulty: data.difficulty,
           category: data.category,
         });
+        setClueIndex(0);
+        startTimeRef.current = Date.now();
       } catch (err) {
         setError(err.message);
       }
@@ -90,8 +92,12 @@ export default function GamePage() {
   const insertLeaderboard = async (isWin) => {
     if (!session?.user || !username || !trivia) return;
 
+    // compute raw metrics
+    const timeTakenMs = Date.now() - startTimeRef.current;
+    const guessesUsed = isWin ? clueIndex + 1 : trivia.clues.length;
+
     const today = getLocalDateString();
-    const timeTakenSeconds = Math.floor((Date.now() - startTime) / 1000);
+    const timeTakenSeconds = Math.floor(timeTakenMs / 1000);
     const minutes = Math.floor(timeTakenSeconds / 60).toString().padStart(2, '0');
     const seconds = (timeTakenSeconds % 60).toString().padStart(2, '0');
     const formattedTime = `${minutes}:${seconds}`;
@@ -100,9 +106,29 @@ export default function GamePage() {
       date: today,
       username,
       time: formattedTime,
-      clues_used: isWin ? clueIndex + 1 : 6
+      clues_used: guessesUsed,
+      // new columns
+      user_id:       session.user.id,
+      solved: isWin,
+      guesses: guessesUsed,
+      time_taken_ms: timeTakenMs
     });
     if (error) console.error('Leaderboard insert error:', error.message);
+  };
+
+  const logGameResult = async (isWin) => {
+    if (!session?.user || !trivia) return;
+    const today = getLocalDateString();
+    const timeTakenMs = Date.now() - startTimeRef.current;
+    const guessesUsed = isWin ? clueIndex + 1 : trivia.clues.length;
+    const { error } = await supabase.from('game_results').insert({
+      user_id: session.user.id,
+      event_date: today,
+      solved: isWin,
+      guesses: guessesUsed,
+      time_taken_ms: timeTakenMs
+    });
+    if (error) console.error('game_results insert error:', error.message);
   };
 
   const handleSubmit = async (e) => {
@@ -114,6 +140,7 @@ export default function GamePage() {
 
     if (isCorrect) {
       confetti({ particleCount: 200, spread: 70, origin: { y: 0.6 }, zIndex: 2000 });
+      await logGameResult(true);
       await updateStats(true);
       await insertLeaderboard(true);
       setModalProps({
@@ -124,7 +151,9 @@ export default function GamePage() {
         showNameEntry: true
       });
       setModalVisible(true);
+
     } else if (clueIndex === trivia.clues.length - 1) {
+      await logGameResult(false);
       await updateStats(false);
       await insertLeaderboard(false);
       setModalProps({
@@ -135,6 +164,7 @@ export default function GamePage() {
         showNameEntry: false
       });
       setModalVisible(true);
+
     } else {
       setClueIndex(i => i + 1);
     }
@@ -153,6 +183,7 @@ export default function GamePage() {
 
   return (
     <>
+      {/* <Nav /> */}
       <div className="container">
         <main>
           <div className="game-section">
@@ -215,7 +246,6 @@ export default function GamePage() {
         visible={modalVisible}
         onClose={handleCloseModal}
         onSubmitScore={async () => {
-          // you might also want to grab the playerName / xUsername here
           await insertLeaderboard(true);
           handleCloseModal();
         }}
